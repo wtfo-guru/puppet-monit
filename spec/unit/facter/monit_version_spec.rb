@@ -1,21 +1,25 @@
 require 'spec_helper'
-require 'facter/monit_version'
 
-describe 'Facter::Util::MonitVersion (monit_version)' do
+describe 'Facter::Util::Fact' do
+  before do
+    Facter.clear
+  end
+
   context 'with monit v5.14 installed' do
-    let(:monit_version) do
-      "This is Monit version 5.14\nCopyright (C) 2001-2015 Tildeslash Ltd. All Rights Reserved."
+    before :each do
+      Facter::Util::Resolution.expects(:exec).with('monit -V 2>&1').returns("This is Monit version 5.14\nCopyright (C) 2001-2015 Tildeslash Ltd. All Rights Reserved.")
     end
-
     it 'returns 5.14' do
-      Facter::Util::Resolution.expects(:exec).with('monit -V 2>&1').returns(monit_version)
-      expect(Facter::Util::MonitVersion.get_monit_version).to eq('5.14')
+	    expect(Facter.fact(:monit_version).value).to eq('5.14')
     end
   end
+
   context 'with monit not installed' do
-    it 'is nil' do
+    before :each do
       Facter::Util::Resolution.expects(:exec).with('monit -V 2>&1').returns(nil)
-      expect(Facter::Util::MonitVersion.get_monit_version).to be_nil
+    end
+    it 'is nil' do
+      expect(Facter.fact(:monit_version).value).to be_nil
     end
   end
 end
