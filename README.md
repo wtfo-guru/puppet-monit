@@ -1,29 +1,24 @@
 # monit
 
-[![Build Status](https://travis-ci.org/echoes-tech/puppet-monit.svg?branch=master)]
-(https://travis-ci.org/echoes-tech/puppet-monit)
-[![Flattr Button](https://api.flattr.com/button/flattr-badge-large.png "Flattr This!")]
-(https://flattr.com/submit/auto?user_id=echoes&url=https://forge.puppetlabs.com/echoes/monit&title=Puppet%20module%20to%20manage%20Monit&description=This%20module%20installs%20and%20configures%20Monit.%20It%20allows%20you%20to%20enable%20HTTP%20Dashboard%20an%20to%20add%20check%20from%20a%20file.&lang=en_GB&category=software "Puppet module to manage Monit installation and configuration")
+[![Puppet Forge Version](http://img.shields.io/puppetforge/v/soli/monit.svg)](https://forge.puppetlabs.com/soli/monit)
+[![Puppet Forge Downloads](http://img.shields.io/puppetforge/dt/soli/monit.svg)](https://forge.puppetlabs.com/soli/monit)
+[![Puppet Forge Score](http://img.shields.io/puppetforge/f/soli/monit.svg)](https://forge.puppetlabs.com/soli/monit)
+[![Build Status](https://travis-ci.org/solution-libre/puppet-monit.svg?branch=master)](https://travis-ci.org/solution-libre/puppet-monit)
 
 #### Table of Contents
 
-1. [Overview](#overview)
-2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with monit](#setup)
+1. [Module Description - What the module does and why it is useful](#module-description)
+2. [Setup - The basics of getting started with monit](#setup)
     * [Setup requirements](#setup-requirements)
     * [Beginning with monit](#beginning-with-monit)
-4. [Usage - Configuration options and additional functionality](#usage)
+3. [Usage - Configuration options and additional functionality](#usage)
     * [Enable Monit Dashboard](#enable-monit-dashboard)
     * [Add a check](#add-a-check)
     * [Remove a check](#remove-a-check)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-6. [Limitations - OS compatibility, etc.](#limitations)
-7. [Development - Guide for contributing to the module](#development)
-8. [Contributors](#contributors)
-
-## Overview
-
-Puppet module to manage Monit installation and configuration.
+4. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
+5. [Limitations - OS compatibility, etc.](#limitations)
+6. [Development - Guide for contributing to the module](#development)
+7. [Contributors](#contributors)
 
 ## Module Description
 
@@ -263,10 +258,11 @@ RedHat and Debian family OSes are officially supported. Tested and built on Debi
 
 ## Development
 
-[Echoes Technologies](https://echoes.fr) modules on the Puppet Forge are open projects, and community contributions are essential for keeping them great.
+[Solution Libre](https://www.solution-libre.fr) modules on the Puppet Forge are open projects, and community contributions are essential for keeping them great.
 
-[Fork this module on GitHub](https://github.com/echoes-tech/puppet-monit/fork)
+
+[Fork this module on GitHub](https://github.com/solution-libre/puppet-monit/fork)
 
 ## Contributors
 
-The list of contributors can be found at: https://github.com/echoes-tech/puppet-monit/graphs/contributors
+The list of contributors can be found at: https://github.com/solution-libre/puppet-monit/graphs/contributors
