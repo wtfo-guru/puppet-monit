@@ -1,12 +1,12 @@
 {
-  "name": "echoes-monit",
+  "name": "soli-monit",
   "version": "1.1.2",
-  "author": "Echoes Technologies",
+  "author": "Solution Libre SAS",
   "summary": "Puppet module to manage monit installation and configuration",
   "license": "Apache-2.0",
-  "source": "https://github.com/echoes-tech/puppet-monit",
-  "project_page": "https://github.com/echoes-tech/puppet-monit",
-  "issues_url": "https://github.com/echoes-tech/puppet-monit/issues",
+  "source": "https://github.com/solution-libre/puppet-monit",
+  "project_page": "https://github.com/solution-libre/puppet-monit",
+  "issues_url": "https://github.com/solution-libre/puppet-monit/issues",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",
@@ -69,10 +69,6 @@
     }
   ],
   "requirements": [
-    {
-      "name": "pe",
-      "version_requirement": ">= 3.2.0 < 5.0.0"
-    },
     {
       "name": "puppet",
       "version_requirement": ">= 3.0.0 < 5.0.0"

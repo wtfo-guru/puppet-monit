@@ -7,54 +7,50 @@ describe 'monit::check' do
   let(:title) { 'test' }
   let(:facts) do
     {
-      :osfamily        => 'Debian',
-      :lsbdistcodename => 'squeeze',
-      :monit_version   => '5',
+      osfamily: 'Debian',
+      lsbdistcodename: 'squeeze',
+      monit_version: '5',
     }
   end
 
   context 'with default values for parameters' do
-    it { should compile.with_all_deps }
-    it { should contain_class('monit') }
+    it { is_expected.to compile.with_all_deps }
+    it { is_expected.to contain_class('monit') }
     it do
-      should contain_file('/etc/monit/conf.d/test').with({
-        'ensure'  => 'present',
-        'owner'   => 'root',
-        'group'   => 'root',
-        'mode'    => '0644',
-        'source'  => nil,
-        'content' => nil,
-        'notify'  => 'Service[monit]',
-        'require' => 'Package[monit]',
-      })
+      is_expected.to contain_file('/etc/monit/conf.d/test').with('ensure' => 'present',
+                                                                 'owner'   => 'root',
+                                                                 'group'   => 'root',
+                                                                 'mode'    => '0644',
+                                                                 'source'  => nil,
+                                                                 'content' => nil,
+                                                                 'notify'  => 'Service[monit]',
+                                                                 'require' => 'Package[monit]')
     end
   end
 
-  %w(absent present).each do |value|
+  %w[absent present].each do |value|
     context "with ensure set to valid <#{value}>" do
       let(:params) do
         {
-          :ensure => value,
+          ensure: value,
         }
       end
 
       it do
-        should contain_file('/etc/monit/conf.d/test').with({
-          'ensure'  => value,
-          'owner'   => 'root',
-          'group'   => 'root',
-          'mode'    => '0644',
-          'source'  => nil,
-          'content' => nil,
-          'notify'  => 'Service[monit]',
-          'require' => 'Package[monit]',
-        })
+        is_expected.to contain_file('/etc/monit/conf.d/test').with('ensure' => value,
+                                                                   'owner'   => 'root',
+                                                                   'group'   => 'root',
+                                                                   'mode'    => '0644',
+                                                                   'source'  => nil,
+                                                                   'content' => nil,
+                                                                   'notify'  => 'Service[monit]',
+                                                                   'require' => 'Package[monit]')
       end
     end
   end
 
   context 'with content set to a valid value' do
-    content = <<-END.gsub(/^\s+\|/, '')
+    content = <<-END.gsub(%r{^\s+\|}, '')
       |check process ntpd with pidfile /var/run/ntpd.pid
       |start program = "/etc/init.d/ntpd start"
       |stop  program = "/etc/init.d/ntpd stop"
@@ -63,56 +59,53 @@ describe 'monit::check' do
     END
     let(:params) do
       {
-        :content => content,
+        content: content,
       }
     end
 
     it do
-      should contain_file('/etc/monit/conf.d/test').with({
-        'ensure'  => 'present',
-        'owner'   => 'root',
-        'group'   => 'root',
-        'mode'    => '0644',
-        'source'  => nil,
-        'content' => content,
-        'notify'  => 'Service[monit]',
-        'require' => 'Package[monit]',
-      })
+      is_expected.to contain_file('/etc/monit/conf.d/test').with('ensure' => 'present',
+                                                                 'owner'   => 'root',
+                                                                 'group'   => 'root',
+                                                                 'mode'    => '0644',
+                                                                 'source'  => nil,
+                                                                 'content' => content,
+                                                                 'notify'  => 'Service[monit]',
+                                                                 'require' => 'Package[monit]')
     end
   end
 
   context 'with source set to a valid value' do
     let(:params) do
       {
-        :source => 'puppet:///modules/monit/ntp',
+        source: 'puppet:///modules/monit/ntp',
       }
     end
 
     it do
-      should contain_file('/etc/monit/conf.d/test').with({
-        'ensure'  => 'present',
-        'owner'   => 'root',
-        'group'   => 'root',
-        'mode'    => '0644',
-        'source'  => 'puppet:///modules/monit/ntp',
-        'content' => nil,
-        'notify'  => 'Service[monit]',
-        'require' => 'Package[monit]',
-      })
+      is_expected.to contain_file('/etc/monit/conf.d/test').with('ensure' => 'present',
+                                                                 'owner'   => 'root',
+                                                                 'group'   => 'root',
+                                                                 'mode'    => '0644',
+                                                                 'source'  => 'puppet:///modules/monit/ntp',
+                                                                 'content' => nil,
+                                                                 'notify'  => 'Service[monit]',
+                                                                 'require' => 'Package[monit]')
     end
   end
 
   context 'with content and source set at the same time' do
     let(:params) do
       {
-       :content => 'content',
-       :source  => 'puppet:///modules/subject/test',
+        content: 'content',
+        source: 'puppet:///modules/subject/test',
       }
     end
-    it 'should fail' do
-      expect do
-        should contain_class(subject)
-      end.to raise_error(Puppet::Error, /Parameters source and content are mutually exclusive/)
+
+    it 'fails' do
+      expect {
+        catalogue
+      }.to raise_error(Puppet::Error, %r{Parameters source and content are mutually exclusive})
     end
   end
 
@@ -120,9 +113,9 @@ describe 'monit::check' do
     # set needed custom facts and variables
     let(:facts) do
       {
-        :osfamily        => 'Debian',
-        :lsbdistcodename => 'squeeze',
-        :monit_version   => '5',
+        osfamily: 'Debian',
+        lsbdistcodename: 'squeeze',
+        monit_version: '5',
       }
     end
     let(:validation_params) do
@@ -133,22 +126,22 @@ describe 'monit::check' do
 
     validations = {
       'regex_file_ensure' => {
-        :name    => %w(ensure),
-        :valid   => %w(present absent),
-        :invalid => ['file', 'directory', 'link', %w(array), { 'ha' => 'sh' }, 3, 2.42, true, false, nil],
-        :message => 'must be \'present\' or \'absent\'',
+        name: %w[ensure],
+        valid: %w[present absent],
+        invalid: ['file', 'directory', 'link', %w[array], { 'ha' => 'sh' }, 3, 2.42, true, false, nil],
+        message: 'must be \'present\' or \'absent\'',
       },
       'string' => {
-        :name    => %w(content),
-        :valid   => %w(string),
-        :invalid => [%w(array), { 'ha' => 'sh' }, 3, 2.42, true, false],
-        :message => 'is not a string',
+        name: %w[content],
+        valid: %w[string],
+        invalid: [%w[array], { 'ha' => 'sh' }, 3, 2.42, true, false],
+        message: 'is not a string',
       },
       'string_file_source' => {
-        :name    => %w(source),
-        :valid   => %w(puppet:///modules/subject/test),
-        :invalid => [%w(array), { 'ha' => 'sh' }, 3, 2.42, true, false],
-        :message => 'is not a string',
+        name: %w[source],
+        valid: %w[puppet:///modules/subject/test],
+        invalid: [%w[array], { 'ha' => 'sh' }, 3, 2.42, true, false],
+        message: 'is not a string',
       },
     }
 
@@ -156,18 +149,20 @@ describe 'monit::check' do
       var[:name].each do |var_name|
         var[:valid].each do |valid|
           context "with #{var_name} (#{type}) set to valid #{valid} (as #{valid.class})" do
-            let(:params) { validation_params.merge({ :"#{var_name}" => valid, }) }
-            it { should compile }
+            let(:params) { validation_params.merge(:"#{var_name}" => valid) }
+
+            it { is_expected.to compile }
           end
         end
 
         var[:invalid].each do |invalid|
           context "with #{var_name} (#{type}) set to invalid #{invalid} (as #{invalid.class})" do
-            let(:params) { validation_params.merge({ :"#{var_name}" => invalid, }) }
-            it 'should fail' do
-              expect do
-                should contain_class(subject)
-              end.to raise_error(Puppet::Error, /#{var[:message]}/)
+            let(:params) { validation_params.merge(:"#{var_name}" => invalid) }
+
+            it 'fails' do
+              expect {
+                catalogue
+              }.to raise_error(Puppet::Error, %r{#{var[:message]}})
             end
           end
         end
