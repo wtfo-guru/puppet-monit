@@ -7,9 +7,9 @@ describe 'monit::check' do
   let(:title) { 'test' }
   let(:facts) do
     {
-      osfamily: 'Debian',
+      osfamily:        'Debian',
       lsbdistcodename: 'squeeze',
-      monit_version: '5',
+      monit_version:   '5',
     }
   end
 
@@ -17,7 +17,7 @@ describe 'monit::check' do
     it { is_expected.to compile.with_all_deps }
     it { is_expected.to contain_class('monit') }
     it do
-      is_expected.to contain_file('/etc/monit/conf.d/test').with('ensure' => 'present',
+      is_expected.to contain_file('/etc/monit/conf.d/test').with('ensure'  => 'present',
                                                                  'owner'   => 'root',
                                                                  'group'   => 'root',
                                                                  'mode'    => '0644',
@@ -37,7 +37,7 @@ describe 'monit::check' do
       end
 
       it do
-        is_expected.to contain_file('/etc/monit/conf.d/test').with('ensure' => value,
+        is_expected.to contain_file('/etc/monit/conf.d/test').with('ensure'  => value,
                                                                    'owner'   => 'root',
                                                                    'group'   => 'root',
                                                                    'mode'    => '0644',
@@ -64,7 +64,7 @@ describe 'monit::check' do
     end
 
     it do
-      is_expected.to contain_file('/etc/monit/conf.d/test').with('ensure' => 'present',
+      is_expected.to contain_file('/etc/monit/conf.d/test').with('ensure'  => 'present',
                                                                  'owner'   => 'root',
                                                                  'group'   => 'root',
                                                                  'mode'    => '0644',
@@ -83,7 +83,7 @@ describe 'monit::check' do
     end
 
     it do
-      is_expected.to contain_file('/etc/monit/conf.d/test').with('ensure' => 'present',
+      is_expected.to contain_file('/etc/monit/conf.d/test').with('ensure'  => 'present',
                                                                  'owner'   => 'root',
                                                                  'group'   => 'root',
                                                                  'mode'    => '0644',
@@ -113,9 +113,9 @@ describe 'monit::check' do
     # set needed custom facts and variables
     let(:facts) do
       {
-        osfamily: 'Debian',
+        osfamily:        'Debian',
         lsbdistcodename: 'squeeze',
-        monit_version: '5',
+        monit_version:   '5',
       }
     end
     let(:validation_params) do

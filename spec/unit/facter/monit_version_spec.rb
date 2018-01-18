@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'Facter::Util::Fact' do
-  before do
+  before(:each) do
     Facter.clear
   end
 
@@ -10,7 +10,7 @@ describe 'Facter::Util::Fact' do
       Facter::Util::Resolution.expects(:exec).with('monit -V 2>&1').returns("This is Monit version 5.14\nCopyright (C) 2001-2015 Tildeslash Ltd. All Rights Reserved.")
     end
     it 'returns 5.14' do
-	    expect(Facter.fact(:monit_version).value).to eq('5.14')
+      expect(Facter.fact(:monit_version).value).to eq('5.14')
     end
   end
 
