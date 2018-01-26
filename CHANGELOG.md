@@ -1,3 +1,11 @@
+## 2018-01-26 - Release 1.2.0
+### Summary
+
+This release adds support to Debian Stretch and uses PDK 1.3.2.
+
+#### Features
+- Added support to Debian Stretch
+
 ## 2018-01-26 - Release 1.1.3
 ### Summary
 
