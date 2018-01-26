@@ -1,3 +1,8 @@
+## 2018-01-26 - Release 1.1.3
+### Summary
+
+This release benefited from the changes introduced by PDK 1.3 (`pdk convert`)
+
 ## 2016-11-07 - Release 1.1.2
 ### Summary
 This release adds support to Ubuntu Xenial and improves compatibility with Puppet Server.
