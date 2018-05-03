@@ -387,7 +387,9 @@ describe 'monit' do
       it 'fails' do
         expect {
           is_expected.to contain_class('monit')
-        }.to raise_error(Puppet::Error, %r{monit supports Debian 6 \(squeeze\), 7 \(wheezy\), 8 \(jessie\) and 9 \(stretch\) and Ubuntu 10\.04 \(lucid\), 12\.04 \(precise\), 14.04 \(trusty\), 16.04 \(xenial\) and 18.04 \(bionic\). Detected lsbdistcodename is <etch>\.})
+        }.to raise_error(Puppet::Error, %r{monit supports Debian 6 \(squeeze\), 7 \(wheezy\), 8 \(jessie\) and 9 \(stretch\) \
+and Ubuntu 10\.04 \(lucid\), 12\.04 \(precise\), 14\.04 \(trusty\), 16\.04 \(xenial\) and 18\.04 \(bionic\)\. \
+Detected lsbdistcodename is <etch>\.})
       end
     end
 
@@ -402,7 +404,9 @@ describe 'monit' do
       it 'fails' do
         expect {
           is_expected.to contain_class('monit')
-        }.to raise_error(Puppet::Error, %r{monit supports Debian 6 \(squeeze\), 7 \(wheezy\), 8 \(jessie\) and 9 \(stretch\) and Ubuntu 10\.04 \(lucid\), 12\.04 \(precise\), 14.04 \(trusty\),b16.04 \(xenial\) and 18.04 \(bionic\).  Detected lsbdistcodename is <hardy>\.})
+        }.to raise_error(Puppet::Error, %r{monit supports Debian 6 \(squeeze\), 7 \(wheezy\), 8 \(jessie\) and 9 \(stretch\) \
+and Ubuntu 10\.04 \(lucid\), 12\.04 \(precise\), 14\.04 \(trusty\), 16\.04 \(xenial\) and 18\.04 \(bionic\). \
+Detected lsbdistcodename is <hardy>\.})
       end
     end
 

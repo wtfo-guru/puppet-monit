@@ -45,10 +45,9 @@ class monit::params {
         }
         default: {
           fail("monit supports Debian 6 (squeeze), 7 (wheezy), 8 (jessie) and 9 (stretch) \
-and Ubuntu 10.04 (lucid), 12.04 (precise), 14.04 (trusty),  16.04 (xenial) and 18.04 (bionic). \
+and Ubuntu 10.04 (lucid), 12.04 (precise), 14.04 (trusty), 16.04 (xenial) and 18.04 (bionic). \
 Detected lsbdistcodename is <${::lsbdistcodename}>.")
         }
-
       }
     }
     'RedHat': {
