@@ -1,3 +1,11 @@
+## 2018-05-03 - Release 1.3.0
+### Summary
+
+This release adds support to Ubuntu Bionic and uses PDK 1.5.0.
+
+#### Features
+- Added support to Ubuntu Bionic
+
 ## 2018-01-26 - Release 1.2.0
 ### Summary
 
