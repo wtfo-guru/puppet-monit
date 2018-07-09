@@ -24,19 +24,29 @@ describe 'monit' do
         when 'RedHat'
           config_dir        = '/etc/monit.d'
           service_hasstatus = true
-          case facts[:operatingsystemmajrelease]
-          when '5'
-            monit_version = '4'
-            config_file   = '/etc/monit.conf'
-          when '6'
-            monit_version = '5'
-            config_file   = '/etc/monit.conf'
-          when '7'
-            monit_version = '5'
-            config_file   = '/etc/monitrc'
+          case facts[:operatingsystem]
+          when 'Amazon'
+            case facts[:operatingsystemmajrelease]
+            when '4'
+              monit_version = '5'
+              config_file   = '/etc/monitrc'
+            else
+              raise 'unsupported operatingsystemmajrelease detected on RedHat osfamily'
+            end
           else
-            raise 'unsupported operatingsystemmajrelease detected on RedHat osfamily'
-          end
+            case facts[:operatingsystemmajrelease]
+            when '5'
+              monit_version = '4'
+              config_file   = '/etc/monit.conf'
+            when '6'
+              monit_version = '5'
+              config_file   = '/etc/monit.conf'
+            when '7'
+              monit_version = '5'
+              config_file   = '/etc/monitrc'
+            else
+              raise 'unsupported operatingsystemmajrelease detected on RedHat osfamily'
+            end
         else
           raise 'unsupported osfamily detected'
         end
