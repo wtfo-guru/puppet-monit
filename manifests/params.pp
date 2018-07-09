@@ -62,7 +62,7 @@ Detected lsbdistcodename is <${::lsbdistcodename}>.")
               $config_file   = '/etc/monitrc'
             }
             default: {
-              fail("Currently only Amazon linux with Majorrelase 4 supported, Detected operatingsystemmajrelease is <${::operatingsystemmajrelease}>.")
+              fail("monit supports Amazon Linux 4. Detected operatingsystemmajrelease is <${::operatingsystemmajrelease}>.")
             }
           }
         }

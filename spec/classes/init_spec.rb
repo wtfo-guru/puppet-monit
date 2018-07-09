@@ -31,7 +31,7 @@ describe 'monit' do
               monit_version = '5'
               config_file   = '/etc/monitrc'
             else
-              raise 'unsupported operatingsystemmajrelease detected on RedHat osfamily'
+              raise 'unsupported operatingsystemmajrelease detected on Amazon Linux operating system'
             end
           else
             case facts[:operatingsystemmajrelease]
@@ -373,11 +373,26 @@ describe 'monit' do
       end
     end
 
+    context 'when major release of Amazon Linux is unsupported' do
+      let :facts do
+        { osfamily:                  'RedHat',
+          operatingsystem:           'Amazon',
+          operatingsystemmajrelease: '3',
+          monit_version:             '5' }
+      end
+
+      it 'fails' do
+        expect {
+          is_expected.to contain_class('monit')
+        }.to raise_error(Puppet::Error, %r{monit supports Amazon Linux 4\. Detected operatingsystemmajrelease is <3>})
+      end
+    end
+
     context 'when major release of EL is unsupported' do
       let :facts do
         { osfamily:                  'RedHat',
+          operatingsystem:           'CentOS',
           operatingsystemmajrelease: '4',
-          operatingsystem: 'CentOS',
           monit_version:             '5' }
       end
 
