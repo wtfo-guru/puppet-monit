@@ -471,48 +471,45 @@ Detected lsbdistcodename is <hardy>\.})
 
     validations = {
       'absolute_path' => {
-        name: %w[config_file config_dir logfile],
-        valid: %w[/absolute/filepath /absolute/directory/],
-        invalid: ['invalid', 3, 2.42, %w[array], { 'ha' => 'sh' }],
+        name: ['config_file', 'config_dir', 'logfile'],
+        valid: ['/absolute/filepath', '/absolute/directory/'],
+        invalid: ['invalid', 3, 2.42, ['array'], { 'ha' => 'sh' }],
         message: 'is not an absolute path',
       },
       'array' => {
-        name: %w[alert_emails],
-        valid: [%w[valid array]],
+        name: ['alert_emails'],
+        valid: [['valid', 'array']],
         invalid: ['string', { 'ha' => 'sh' }, 3, 2.42, true],
         message: 'is not an Array',
       },
       'bool_stringified' => {
-        name: %w[httpd manage_firewall service_enable service_manage mmonit_without_credential config_dir_purge],
+        name: ['httpd', 'manage_firewall', 'service_enable', 'service_manage', 'mmonit_without_credential', 'config_dir_purge'],
         valid: [true, 'true', false, 'false'],
-        invalid: ['invalid', 3, 2.42, %w[array], { 'ha' => 'sh' }, nil],
+        invalid: ['invalid', 3, 2.42, ['array'], { 'ha' => 'sh' }, nil],
         message: '(is not a boolean|Unknown type of boolean)',
       },
       'hash' => {
-        name: %w[mailformat],
+        name: ['mailformat'],
         valid: [{ 'ha' => 'sh' }],
-        invalid: ['string', 3, 2.42, %w[array], true, false, nil],
+        invalid: ['string', 3, 2.42, ['array'], true, false, nil],
         message: 'is not a Hash',
       },
       'integer_stringified' => {
-        name: %w[check_interval httpd_port start_delay],
+        name: ['check_interval', 'httpd_port', 'start_delay'],
         valid: [242, '242'],
-        invalid: [2.42, 'invalid', %w[array], { 'ha' => 'sh ' }, true, false, nil],
+        invalid: [2.42, 'invalid', ['array'], { 'ha' => 'sh ' }, true, false, nil],
         message: 'Expected.*to be an Integer',
       },
       'string' => {
-        name: %w[
-          httpd_address httpd_user httpd_password package_ensure package_name service_name
-          mailserver mmonit_address mmonit_port mmonit_user mmonit_password
-        ],
+        name: ['httpd_address', 'httpd_user', 'httpd_password', 'package_ensure', 'package_name', 'service_name', 'mailserver', 'mmonit_address', 'mmonit_port', 'mmonit_user', 'mmonit_password'],
         valid: ['present'],
-        invalid: [%w[array], { 'ha' => 'sh' }],
+        invalid: [['array'], { 'ha' => 'sh' }],
         message: 'is not a string',
       },
       'service_ensure_string' => {
-        name: %w[service_ensure],
+        name: ['service_ensure'],
         valid: ['running'],
-        invalid: [%w[array], { 'ha' => 'sh' }],
+        invalid: [['array'], { 'ha' => 'sh' }],
         message: 'is not a string',
       },
     }
