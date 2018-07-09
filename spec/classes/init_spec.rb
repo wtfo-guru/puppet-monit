@@ -47,6 +47,7 @@ describe 'monit' do
             else
               raise 'unsupported operatingsystemmajrelease detected on RedHat osfamily'
             end
+          end
         else
           raise 'unsupported osfamily detected'
         end
