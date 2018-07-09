@@ -366,6 +366,7 @@ describe 'monit' do
       let :facts do
         { osfamily:                  'RedHat',
           operatingsystemmajrelease: '4',
+          operatingsystem: 'CentOS',
           monit_version:             '5' }
       end
 
