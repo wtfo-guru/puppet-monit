@@ -19,6 +19,12 @@
   ],
   "operatingsystem_support": [
     {
+      "operatingsystem": "Amazon",
+      "operatingsystemrelease": [
+        "4"
+      ]
+    },
+    {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
         "6",
@@ -80,6 +86,6 @@
     "monitoring"
   ],
   "template-url": "file:///opt/puppetlabs/pdk/share/cache/pdk-templates.git",
-  "template-ref": "1.6.0-0-gf5564c0",
-  "pdk-version": "1.6.0"
+  "template-ref": "1.6.1-0-g6b0d497",
+  "pdk-version": "1.6.1"
 }
