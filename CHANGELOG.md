@@ -1,3 +1,11 @@
+## 2018-07-09 - Release 1.4.0
+### Summary
+
+This release adds support to Amazon Linux 2 and uses PDK 1.6.1.
+
+#### Features
+- Added support to Amazon Linux 2
+
 ## 2018-05-03 - Release 1.3.0
 ### Summary
 
