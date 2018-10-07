@@ -269,7 +269,7 @@ describe 'monit' do
           context 'when mmonit_address is set to valid string <monit3.test.local>' do
             let(:params) { { mmonit_address: 'monit3.test.local' } }
 
-            content = 'set mmonit http://monit:monit@monit3.test.local:8080/collector'
+            content = 'set mmonit https://monit:monit@monit3.test.local:8443/collector'
             it { is_expected.to contain_file('monit_config').with_content(%r{#{content}}) }
           end
 
@@ -288,9 +288,10 @@ describe 'monit' do
           context 'when mmonit_* params are set to valid values' do
             let(:params) do
               {
-                mmonit_address: 'monit242.test.local',
-                mmonit_port: '8242',
-                mmonit_user: 'monituser',
+                mmonit_address:  'monit242.test.local',
+                mmonit_https:    false,
+                mmonit_port:     '8242',
+                mmonit_user:     'monituser',
                 mmonit_password: 'Pa55w0rd',
               }
             end
@@ -483,7 +484,7 @@ Detected lsbdistcodename is <hardy>\.})
         message: 'is not an Array',
       },
       'bool_stringified' => {
-        name: ['httpd', 'manage_firewall', 'service_enable', 'service_manage', 'mmonit_without_credential', 'config_dir_purge'],
+        name: ['httpd', 'manage_firewall', 'service_enable', 'service_manage', 'mmonit_https', 'mmonit_without_credential', 'config_dir_purge'],
         valid: [true, 'true', false, 'false'],
         invalid: ['invalid', 3, 2.42, ['array'], { 'ha' => 'sh' }, nil],
         message: '(is not a boolean|Unknown type of boolean)',

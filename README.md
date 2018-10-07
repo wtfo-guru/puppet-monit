@@ -178,9 +178,13 @@ If true and if puppetlabs-firewall module is present, Puppet manages firewall to
 
 Specifies the remote address of an M/Monit server to be used by Monit agent for report. If set to undef, M/Monit connection is disabled. Valid options: string. Default value: undef
 
+##### `mmonit_https` *Requires at least Monit 5.0*
+
+Specifies wheither the protocol of the M/Monit server is HTTPs. Valid options: 'true' or 'false'. Default value: 'true'
+
 ##### `mmonit_port` *Requires at least Monit 5.0*
 
-Specifies the remote port of the M/Monit server. Valid options: numeric. Default value: 8080
+Specifies the remote port of the M/Monit server. Valid options: numeric. Default value: 8443
 
 ##### `mmonit_user` *Requires at least Monit 5.0*
 

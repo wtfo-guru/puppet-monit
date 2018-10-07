@@ -22,7 +22,8 @@ class monit::params {
   $alert_emails              = []
   $start_delay               = 0
   $mmonit_address            = undef
-  $mmonit_port               = '8080'
+  $mmonit_https              = true
+  $mmonit_port               = '8443'
   $mmonit_user               = 'monit'
   $mmonit_password           = 'monit'
   $mmonit_without_credential = false

@@ -23,6 +23,7 @@ class monit (
   $alert_emails              = $monit::params::alert_emails,
   $start_delay               = $monit::params::start_delay,
   $mmonit_address            = $monit::params::mmonit_address,
+  $mmonit_https              = $monit::params::mmonit_https,
   $mmonit_port               = $monit::params::mmonit_port,
   $mmonit_user               = $monit::params::mmonit_user,
   $mmonit_password           = $monit::params::mmonit_password,
@@ -51,6 +52,12 @@ class monit (
     $service_manage_bool = str2bool($service_manage)
   } else {
     $service_manage_bool = $service_manage
+  }
+
+  if is_string($mmonit_https) == true {
+    $mmonit_https_bool = str2bool($mmonit_https)
+  } else {
+    $mmonit_https_bool = $mmonit_https
   }
 
   if is_string($mmonit_without_credential) == true {
@@ -100,6 +107,7 @@ class monit (
     validate_string($mmonit_address)
   }
 
+  validate_bool($mmonit_https_bool)
   validate_string($mmonit_port)
   validate_string($mmonit_user)
   validate_string($mmonit_password)
