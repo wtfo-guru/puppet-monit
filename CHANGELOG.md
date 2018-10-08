@@ -1,3 +1,15 @@
+## 2018-10-07 - Release 2.0.0
+## Summary
+
+This release adds `httpd_allow` configuration and support for MMonit HTTPs addresses and uses PDK 1.7.0.
+
+***BREAKING CHANGES***
+The MMonit address is now by default with HTTPs with the port 8443 (8080 previously).
+
+#### Features
+- Add `httpd_allow` configuration
+- Add support for MMonit HTTPs addresses
+
 ## 2018-07-09 - Release 1.4.0
 ### Summary
 
