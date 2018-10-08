@@ -7,6 +7,7 @@ class monit::params {
   $httpd                     = false
   $httpd_port                = 2812
   $httpd_address             = 'localhost'
+  $httpd_allow               = '0.0.0.0/0.0.0.0'
   $httpd_user                = 'admin'
   $httpd_password            = 'monit'
   $manage_firewall           = false

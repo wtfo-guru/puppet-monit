@@ -144,6 +144,10 @@ Specifies the port of the Monit Dashboard. Valid options: numeric. Default value
 
 Specifies the IP address of the Monit Dashboard. Valid options: string. Default value: 'locahost'
 
+##### `httpd_allow`
+
+Specifies the allow option of the Monit Dashboard. Valid options: string. Default value: '0.0.0.0/0.0.0.0'
+
 ##### `httpd_user`
 
 Specifies the user to access the Monit Dashboard. Valid options: string. Default value: 'admin'

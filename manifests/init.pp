@@ -5,6 +5,7 @@ class monit (
   $httpd                     = $monit::params::httpd,
   $httpd_port                = $monit::params::httpd_port,
   $httpd_address             = $monit::params::httpd_address,
+  $httpd_allow               = $monit::params::httpd_allow,
   $httpd_user                = $monit::params::httpd_user,
   $httpd_password            = $monit::params::httpd_password,
   $manage_firewall           = $monit::params::manage_firewall,
@@ -78,6 +79,7 @@ class monit (
   validate_bool($httpd_bool)
   validate_integer($httpd_port, 65535, 0)
   validate_string($httpd_address)
+  validate_string($httpd_allow)
   validate_string($httpd_user)
   validate_string($httpd_password)
   validate_bool($manage_firewall_bool)

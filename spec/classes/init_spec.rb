@@ -140,10 +140,11 @@ describe 'monit' do
           context 'when httpd_* params are set to valid values' do
             let(:params) do
               {
-                httpd: true,
-                httpd_port: 2420,
-                httpd_address: 'otherhost',
-                httpd_user: 'tester',
+                httpd:          true,
+                httpd_port:     2420,
+                httpd_address:  'otherhost',
+                httpd_allow:    '0.0.0.0/0.0.0.0',
+                httpd_user:     'tester',
                 httpd_password: 'Passw0rd',
               }
             end
@@ -502,7 +503,9 @@ Detected lsbdistcodename is <hardy>\.})
         message: 'Expected.*to be an Integer',
       },
       'string' => {
-        name: ['httpd_address', 'httpd_user', 'httpd_password', 'package_ensure', 'package_name', 'service_name', 'mailserver', 'mmonit_address', 'mmonit_port', 'mmonit_user', 'mmonit_password'],
+        name: ['httpd_address', 'httpd_allow', 'httpd_user', 'httpd_password',
+               'package_ensure', 'package_name', 'service_name', 'mailserver',
+               'mmonit_address', 'mmonit_port', 'mmonit_user', 'mmonit_password'],
         valid: ['present'],
         invalid: [['array'], { 'ha' => 'sh' }],
         message: 'is not a string',

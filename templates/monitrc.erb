@@ -28,7 +28,7 @@ set eventqueue
 <%- if @httpd == true -%>
 set httpd port <%= @httpd_port %> and
    use address <%= @httpd_address %>
-   allow 0.0.0.0/0.0.0.0
+   allow <%= @httpd_allow %>
    <%- if !@httpd_user.empty? && !@httpd_password.empty? -%>
    allow <%= @httpd_user %>:<%= @httpd_password %>
    <%- end -%>
