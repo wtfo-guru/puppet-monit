@@ -59,7 +59,7 @@ Detected lsbdistcodename is <${::lsbdistcodename}>.")
       case $::operatingsystem {
         'Amazon': {
           case $::operatingsystemmajrelease {
-            '4': {
+            '4', '2': {
               $monit_version = '5'
               $config_file   = '/etc/monitrc'
             }
