@@ -1,3 +1,11 @@
+## 2018-11-23 - Release 2.0.1
+### Summary
+
+This release fixes the support of Amazon Linux 2 and uses PDK 1.7.1.
+
+#### BugFixes
+- Fixe the support of Amazon Linux 2
+
 ## 2018-10-07 - Release 2.0.0
 ## Summary
 
