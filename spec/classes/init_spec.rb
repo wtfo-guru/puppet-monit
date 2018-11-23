@@ -27,7 +27,7 @@ describe 'monit' do
           case facts[:operatingsystem]
           when 'Amazon'
             case facts[:operatingsystemmajrelease]
-            when '4'
+            when '4', '2'
               monit_version = '5'
               config_file   = '/etc/monitrc'
             else
@@ -386,7 +386,7 @@ describe 'monit' do
       it 'fails' do
         expect {
           is_expected.to contain_class('monit')
-        }.to raise_error(Puppet::Error, %r{monit supports Amazon Linux 4\. Detected operatingsystemmajrelease is <3>})
+        }.to raise_error(Puppet::Error, %r{monit supports Amazon Linux 2\. Detected operatingsystemmajrelease is <3>})
       end
     end
 

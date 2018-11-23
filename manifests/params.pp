@@ -59,12 +59,12 @@ Detected lsbdistcodename is <${::lsbdistcodename}>.")
       case $::operatingsystem {
         'Amazon': {
           case $::operatingsystemmajrelease {
-            '4': {
+            '4', '2': {
               $monit_version = '5'
               $config_file   = '/etc/monitrc'
             }
             default: {
-              fail("monit supports Amazon Linux 4. Detected operatingsystemmajrelease is <${::operatingsystemmajrelease}>.")
+              fail("monit supports Amazon Linux 2. Detected operatingsystemmajrelease is <${::operatingsystemmajrelease}>.")
             }
           }
         }
