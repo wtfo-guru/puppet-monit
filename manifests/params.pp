@@ -89,6 +89,10 @@ Detected lsbdistcodename is <${::lsbdistcodename}>.")
         }
       }
     }
+    'Archlinux': {
+      $monit_version = '5'
+      $config_file   = '/etc/monitrc'
+    }
     default: {
       fail("monit supports osfamilies Debian and RedHat. Detected osfamily is <${::osfamily}>.")
     }
