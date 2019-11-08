@@ -27,7 +27,9 @@ set eventqueue
     slots 100
 <%- if @httpd == true -%>
 set httpd port <%= @httpd_port %> and
+<%- if !@httpd_address.empty? -%>
    use address <%= @httpd_address %>
+<%- end -%>
    allow <%= @httpd_allow %>
    <%- if !@httpd_user.empty? && !@httpd_password.empty? -%>
    allow <%= @httpd_user %>:<%= @httpd_password %>
