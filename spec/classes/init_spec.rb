@@ -31,9 +31,9 @@ describe 'monit' do
               monit_version = '5'
               config_file   = '/etc/monitrc'
               # aparently there is some FacterDB?? issue that sets 2 to 2017 so we will force back here
-              if facts[:operatingsystemmajrelease] == '2017'
-                facts[:operatingsystemmajrelease] = '2'
-              end
+              # rubocop:disable Metrics/BlockNesting
+              facts[:operatingsystemmajrelease] = '2' if facts[:operatingsystemmajrelease] == '2017'
+              # rubocop:enable Metrics/BlockNesting
             else
               raise 'unsupported operatingsystemmajrelease detected on Amazon Linux operating system'
             end
@@ -178,8 +178,8 @@ describe 'monit' do
                   # an error occurs in the firewall module for debian 6
                   # the latest firewall module only supports debian 8,9,10
                   is_expected.to contain_firewall('2812 allow Monit inbound traffic').with('action' => 'accept',
-                                                                                          'dport'  => '2812',
-                                                                                          'proto'  => 'tcp')
+                                                                                           'dport'  => '2812',
+                                                                                           'proto'  => 'tcp')
                 end
               end
             end
