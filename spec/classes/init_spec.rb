@@ -15,7 +15,7 @@ describe 'monit' do
           when 'squeeze', 'lucid'
             default_file_content = 'startup=1'
             service_hasstatus    = false
-          when 'wheezy', 'jessie', 'stretch', 'precise', 'trusty', 'xenial', 'bionic'
+          when 'wheezy', 'jessie', 'stretch', 'precise', 'trusty', 'xenial', 'bionic', 'buster'
             default_file_content = 'START=yes'
             service_hasstatus    = true
           else
@@ -428,8 +428,8 @@ describe 'monit' do
         expect {
           is_expected.to contain_class('monit')
         }.to raise_error(Puppet::Error, %r{monit supports Debian 6 \(squeeze\), 7 \(wheezy\), 8 \(jessie\) and 9 \(stretch\) \
-and Ubuntu 10\.04 \(lucid\), 12\.04 \(precise\), 14\.04 \(trusty\), 16\.04 \(xenial\) and 18\.04 \(bionic\)\. \
-Detected lsbdistcodename is <etch>\.})
+and Ubuntu 10\.04 \(lucid\), 12\.04 \(precise\), 14\.04 \(trusty\), 16\.04 \(xenial\) and 18\.04 \(bionic\) \
+and Debian 10 \(buster\)\. Detected lsbdistcodename is <etch>\.})
       end
     end
 
@@ -445,8 +445,8 @@ Detected lsbdistcodename is <etch>\.})
         expect {
           is_expected.to contain_class('monit')
         }.to raise_error(Puppet::Error, %r{monit supports Debian 6 \(squeeze\), 7 \(wheezy\), 8 \(jessie\) and 9 \(stretch\) \
-and Ubuntu 10\.04 \(lucid\), 12\.04 \(precise\), 14\.04 \(trusty\), 16\.04 \(xenial\) and 18\.04 \(bionic\). \
-Detected lsbdistcodename is <hardy>\.})
+and Ubuntu 10\.04 \(lucid\), 12\.04 \(precise\), 14\.04 \(trusty\), 16\.04 \(xenial\) and 18\.04 \(bionic\) \
+and Debian 10 \(buster\)\. Detected lsbdistcodename is <hardy>\.})
       end
     end
 
