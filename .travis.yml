@@ -1,4 +1,4 @@
----
+c---
 sudo: false
 dist: trusty
 language: ruby
@@ -35,8 +35,7 @@ matrix:
       rvm: 2.1.9
 branches:
   only:
-    - master
-    - /^v\d/
+    - verify
 notifications:
   email: false
 deploy:
