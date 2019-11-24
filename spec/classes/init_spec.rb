@@ -52,6 +52,11 @@ describe 'monit' do
               raise 'unsupported operatingsystemmajrelease detected on RedHat osfamily'
             end
           end
+        when 'Archlinux'
+          config_file = '/etc/monitrc'
+          config_dir  = '/etc/monit.d'
+          monit_version = '5'
+          service_hasstatus = true
         else
           raise 'unsupported osfamily detected'
         end
