@@ -89,7 +89,7 @@ and Debian 10 (buster). Detected lsbdistcodename is <${::lsbdistcodename}>.")
         }
       }
     }
-    'Archlinux': {
+    'Archlinux', 'Gentoo': {
       $monit_version     = '5'
       $config_file       = '/etc/monitrc'
       $config_dir        = '/etc/monit.d'
